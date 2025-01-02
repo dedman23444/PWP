@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <title>User Management</title>
+</head>
+<body class="bg-gray-100">
+    <nav class="bg-blue-600 p-4">
+        <div class="container mx-auto">
+            <a href="/" class="text-white font-bold">Home</a>
+            <a href="/register" class="text-white ml-4">Register</a>
+            <a href="/login" class="text-white ml-4">Login</a>
+            <a href="/logout" class="text-white ml-4">Logout</a>
+        </div>
+    </nav>
+    <div class="container mx-auto mt-5">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class="mb-4">
+                    {% for message in messages %}
+                        <div class="bg-green-500 text-white p-2 rounded">{{ message }}</div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>
